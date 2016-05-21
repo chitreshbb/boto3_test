@@ -5,7 +5,9 @@
 #### Install Boto3
 ```
 sudo pip install boto3
-ensure that there is a **[default]** profile for boto3 to find:
+```
+* ensure that there is a **[default]** profile for boto3 to find:
+```
 nano ~/.aws/credentials
 ```
 
