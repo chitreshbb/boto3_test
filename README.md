@@ -28,7 +28,7 @@ python s3_buckets.py … to a list of your S3 buckets
 
 #### A more realistic approach
 While it’s ok to trigger a lambda function remotely and manually for testing purposes,
-a more realistic usage would be to trigger a lambda function based on some event.
+a more realistic usage would be to trigger a lambda function based on some **event**.
 The AWS Lambda service offers lots of ways to trigger a function.
 If we continue with our example function from part 1, we probably would want to create
 a file of URLs whose title tags we want to fetch.  So the next step would be to upload
