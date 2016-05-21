@@ -20,9 +20,9 @@ python s3_buckets.py … to a list of your S3 buckets
 ```
 
 #### Try our lambda function from Part 1
-show code for invoke.py
-run/test in terminal: time ```python invoke.py```
-compare to running the function locally
+* show code for invoke.py
+* run/test in terminal: time ```python invoke.py```
+* compare to running the function locally
 
 #### A more realistic approach
 While it’s ok to trigger a lambda function remotely and manually for testing purposes,
