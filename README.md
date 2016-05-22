@@ -1,5 +1,10 @@
 # Boto3, Python, and AWS Lambda tutorial part 2
 
+Code and instructions for part 2:
+https://github.com/cleesmith/boto3_test
+Part 1:
+https://github.com/cleesmith/get_html_head_title_tag
+
 ***
 
 #### Install Boto3
