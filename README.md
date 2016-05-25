@@ -1,4 +1,4 @@
-# Boto3, Python, and AWS Lambda tutorial part 2 and 3
+# Boto3, Python, AWS Lambda tutorial part 2 & 3
 
 > Code and instructions for part 2 and 3:
 > https://github.com/cleesmith/boto3_test
