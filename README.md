@@ -1,11 +1,14 @@
-# Boto3, Python, and AWS Lambda tutorial part 2
+# Boto3, Python, and AWS Lambda tutorial part 2 and 3
 
-Code and instructions for part 2:
-https://github.com/cleesmith/boto3_test
-Part 1:
-https://github.com/cleesmith/get_html_head_title_tag
+> Code and instructions for part 2 and 3:
+> https://github.com/cleesmith/boto3_test
+>
+> For part 1 see:
+> https://github.com/cleesmith/get_html_head_title_tag
 
 ***
+
+## Part 2
 
 #### Install Boto3
 ```
@@ -41,6 +44,32 @@ that file of URLs to a S3 bucket.  Anytime a new file appears in that S3 bucket 
 would trigger our lambda function to execute.
 
 > This is what we will work on in future episodes.
+
+***
+
+## Part 3
+
+#### Use boto3 to invoke another lambda function
+
+#### Calling other lambda functions
+```
+edit lambda_invoker.py
+use IAM to update the “fetch_title_role”
+zip -9 bundle.zip lambda_invoker.py
+aws lambda create-function --region us-east-1 --function-name lambda_invoker --role arn:aws:iam::${AWS_ACCOUNT_ID}:role/fetch_title_role --handler lambda_invoker.lambda_handler --runtime python2.7 --profile pylambs --zip-file fileb://bundle.zip
+```
+
+#### testing
+* use Lambda console to test lambda_invoker
+* use command line to test lambda_invoker
+
+#### conclusion
+It’s easy to invoke the fetch_title lambda function we created in part 1 using our new lambda_invoker function.
+Note that both of these lambda functions are using the InvocationType of RequestResponse,
+so we are not taking advantage of Lambda’s ability to perform functions asynchronously.
+We would have to use the InvocationType of Event in order to perform many fetch_title functions in parallel.
+But that would also require us to handle the responses differently.
+This is where using S3 and DynamoDB come into play … as we will see in future episodes.
 
 ***
 ***
