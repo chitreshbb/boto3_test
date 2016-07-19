@@ -1,6 +1,6 @@
-# Boto3, Python, AWS Lambda tutorial part 2 & 3
+# Boto3, Python, AWS Lambda tutorial part 2, 3, and 4
 
-> Code and instructions for part 2 and 3:
+> Code and instructions for part 2, 3, and 4:
 > https://github.com/cleesmith/boto3_test
 >
 > For part 1 see:
@@ -70,6 +70,43 @@ so we are not taking advantage of Lambda’s ability to perform functions asynch
 We would have to use the InvocationType of Event in order to perform many fetch_title functions in parallel.
 But that would also require us to handle the responses differently.
 This is where using S3 and DynamoDB come into play … as we will see in future episodes.
+
+***
+
+## Part 4
+
+#### Update lambda function to detect/use a SQS queue
+```
+see: https://github.com/cleesmith/get_html_head_title_tag
+use IAM to update the “fetch_title_role” and attach the AmazonSQSFullAccess policy
+... to update and re-deploy:
+source env/bin/activate
+echo $VIRTUAL_ENV ... to show where python stuff is
+edit fetch_title.py ... alter code
+rm bundle.zip
+zip -9 bundle.zip fetch_title.py
+cd $VIRTUAL_ENV/lib/python2.7/site-packages
+zip -r9 ~/aws_lambda_python/get_html_head_title_tag/bundle.zip *
+cd ~/aws_lambda_python/get_html_head_title_tag
+aws lambda update-function-code --function-name fetch_title --profile pylambs --zip-file fileb://bundle.zip --publish
+```
+
+#### added fetch_title_via_sqs.py
+This new program does the following:
+* uses uuid to create an uniquely named SQS queue
+* invokes the lambda function fetch_title but asynchronously as an Event
+* waits/retrieves/deletes messages from the SQS queue
+* deletes the SQS queue … as we are all done
+
+#### test everything works
+use a terminal:
+```
+cd boto3_test
+python fetch_title_via_sqs.py
+```
+view the results
+
+#### conclusion
 
 ***
 ***
