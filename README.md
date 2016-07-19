@@ -107,6 +107,10 @@ python fetch_title_via_sqs.py
 view the results
 
 #### conclusion
+While everything works as expected, we are not achieving parallelism because of how we are
+invoking the lambda function.  In the future we will explore using the threading and multiprocessing
+libraries in order to achieve parallelism.
+Also, we may explore using a csv/tsv file of URLs to trigger a lambda function from an S3 bucket.
 
 ***
 ***
