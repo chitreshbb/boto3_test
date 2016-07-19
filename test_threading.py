@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 
 def aworker(num):
-  # here we call awslambda.invoke() a function and ignore the response
+  # here we call awslambda.invoke() and ignore the response
   print(" worker %s started: %s" % (num, datetime.now().time()))
   time.sleep(1)
   print(" worker %s finished\n" % num)
