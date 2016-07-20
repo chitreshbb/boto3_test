@@ -112,5 +112,14 @@ invoking the lambda function.  In the future we will explore using the threading
 libraries in order to achieve parallelism.
 Also, we may explore using a csv/tsv file of URLs to trigger a lambda function from an S3 bucket.
 
+#### update: July 19, 2016
+created fetch_title_via_sqs2.py :
+* add threading for faster lambda invocations
+* limit long polling to a maximum of 3 polls, i.e. 30 seconds of waiting
+* test fetching the title tags for 500 URLs
+* the aws lambda service throttled the 500 invocations, yet they all completed
+* 500 URLs took about 18 seconds
+* the aws lambda service did “scale up” by starting 4 instances/containers with different IP addresses (verified by viewing the web server’s log file)
+
 ***
 ***
