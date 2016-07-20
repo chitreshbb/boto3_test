@@ -3,3 +3,4 @@ cls*
 env
 *.zip
 *.html
+nohup.out
